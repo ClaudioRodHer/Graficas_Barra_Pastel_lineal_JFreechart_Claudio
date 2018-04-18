@@ -52,7 +52,7 @@ public class DeudasSalonLineal extends JFrame{
             
             }
               //creando el grafico
-        org.jfree.chart.JFreeChart chart = ChartFactory.createLineChart("Faltan por pagar en lineas :V",
+        org.jfree.chart.JFreeChart chart = ChartFactory.createLineChart3D("Faltan por pagar en lineas :V",
                 "Deudores", "Marmaja por pagar", line_chart_datset, PlotOrientation.VERTICAL, true, true, false);
         chart.setBackgroundPaint(Color.BLACK);
         chart.getTitle().setPaint(Color.WHITE);

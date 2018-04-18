@@ -40,35 +40,33 @@ public class DeudasSalon extends JFrame {
     public void init() {
         panel = new JPanel();
         getContentPane().add(panel);
-         //fuente de datos
+        //fuente de datos
         DefaultCategoryDataset datset = new DefaultCategoryDataset();
-       ResultSet res=null;
-        PreparedStatement ps=null;
+        ResultSet res = null;
+        PreparedStatement ps = null;
         try {
-            ps=(PreparedStatement) cn.prepareStatement("SELECT * FROM Deuda");
-            res=ps.executeQuery();
-            while(res.next()){
-            datset.setValue(res.getInt(3), res.getString(2), res.getString(1));
-            
-            }
-              //creando el grafico
-        org.jfree.chart.JFreeChart chart = ChartFactory.createBarChart3D("Faltan por pagar",
-                "Deudores", "Marmaja por pagar", datset, PlotOrientation.VERTICAL, true, true, false);
-        chart.setBackgroundPaint(Color.BLACK);
-        chart.getTitle().setPaint(Color.WHITE);
-        CategoryPlot p = chart.getCategoryPlot();
-        p.setRangeGridlinePaint(Color.RED);
-        
-        //mostrar grafico
-        ChartPanel chartPanel = new ChartPanel(chart);
-        panel.add(chartPanel);
-        
-        } catch (Exception e) {
-            System.out.println("el error es: "+e);
-        }
-      
+            ps = (PreparedStatement) cn.prepareStatement("SELECT * FROM Deuda");
+            res = ps.executeQuery();
+            while (res.next()) {
+                datset.setValue(res.getInt(3), res.getString(2), res.getString(1));
 
-        
+            }
+            //creando el grafico
+            org.jfree.chart.JFreeChart chart = ChartFactory.createBarChart3D("Faltan por pagar",
+                    "Deudores", "Marmaja por pagar", datset, PlotOrientation.VERTICAL, true, true, false);
+            chart.setBackgroundPaint(Color.BLACK);
+            chart.getTitle().setPaint(Color.WHITE);
+            CategoryPlot p = chart.getCategoryPlot();
+            p.setRangeGridlinePaint(Color.RED);
+
+            //mostrar grafico
+            ChartPanel chartPanel = new ChartPanel(chart);
+            panel.add(chartPanel);
+
+        } catch (Exception e) {
+            System.out.println("el error es: " + e);
+        }
+
     }
 
     public static void main(String[] args) {
